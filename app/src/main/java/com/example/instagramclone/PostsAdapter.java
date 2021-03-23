@@ -1,6 +1,7 @@
 package com.example.instagramclone;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
 import com.parse.ui.widget.ParseImageView;
 
 import java.util.List;
@@ -48,7 +51,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ParseImageView ivPostPicture;
+        ImageView ivPostPicture;
         TextView tvUser;
         TextView tvDescription;
 
@@ -63,8 +66,28 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         public void bind(Post post){
             tvUser.setText(post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
-            ivPostPicture.setParseFile(post.getImage());
+
+            ParseFile image = post.getImage();
+            if(image != null){
+                Glide.with(context).load(post.getImage().getUrl()).into(ivPostPicture);
+            }
+
 
         }
     }
+
+    //for swiperefresh
+    //Clean all elements of the recycler
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    //Add a list of items
+    public void addAll(List<Post> postsList){
+        posts.addAll(postsList);
+        notifyDataSetChanged();
+    }
+
+
 }

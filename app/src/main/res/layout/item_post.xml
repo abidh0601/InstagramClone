@@ -11,24 +11,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="0dp"
+        tools:text="Username" />
 
-    <com.parse.ui.widget.ParseImageView
+    <ImageView
         android:id="@+id/ivPostPicture"
-        android:layout_width="120dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="307dp"
         android:layout_below="@+id/tvUser"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="113dp"
         android:layout_marginTop="5dp"
+        android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/btnLikePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPostPicture"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <ImageButton
+        android:id="@+id/btnCommentPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPostPicture"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/btnLikePost"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/ufi_comment" />
+
+    <ImageButton
+        android:id="@+id/btnDirectPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPostPicture"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/btnCommentPost"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/direct" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPostPicture"
+        android:layout_below="@+id/btnLikePost"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        tools:text="this is where the description goes" />
 </RelativeLayout>
